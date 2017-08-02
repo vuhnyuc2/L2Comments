@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 var async = require('async');
 
-var DEVELOPMENT_DB = "opinionated_development";
+var DEVELOPMENT_DB = "l2_comments";
 
 var state = {
   pool: null,
@@ -12,7 +12,7 @@ exports.connect = function(done){
   state.pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'root',
     database: DEVELOPMENT_DB
   });
   state.mode = 'DEVELOPMENT';

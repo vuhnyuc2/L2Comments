@@ -1,15 +1,14 @@
 var db = require(global.dbDir);
 
-exports.create = function(comment, post_id, user_id, done){
-  var values = [comment, post_id, user_id];
-  db.get().query("INSERT INTO customers (id, company) VALUES (?, ?)", values, function(err, result){
+exports.create = function(name, done){
+  db.get().query("INSERT INTO customers (name) VALUES (?)", name, function(err, result){
     if (err) return done(err);
     done(null, result.insertId);
   });
 }
 
 exports.get_all = function(done){
-  db.get().query("SELECT company FROM customers", function(err, result){
+  db.get().query("SELECT name FROM customers", function(err, result){
     if (err) return done(err);
     done(null, result);
   });
@@ -22,8 +21,8 @@ exports.get = function(id, done){
   });
 }
 
-exports.get_by_name = function(company, done){
-  db.get().query("SELECT * FROM customers WHERE name = ?", company, function(err, result){
+exports.get_by_name = function(name, done){
+  db.get().query("SELECT * FROM customers WHERE name = ?", name, function(err, result){
     if (err) return done(err);
     done(null, result);
   });
