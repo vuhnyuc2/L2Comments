@@ -16,4 +16,12 @@ router.get("/customerCtlr.js", function(req,res,next){
   res.sendFile(global.viewDir + "/customerCtlr.js");
 });
 
+router.get("/custom.css", function(req,res,next){
+  res.sendFile(global.viewDir + "/custom.css");
+});
+
+router.get("/neat.svg", function(req,res,next){
+  res.sendFile(global.viewDir + "/neat.svg");
+});
+
 module.exports = router;
