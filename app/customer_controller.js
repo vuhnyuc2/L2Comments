@@ -1,5 +1,6 @@
 var router = require('express').Router();
-var Customer = require(global.modelDir + '/customer.js');
+var Customer = require(global.modelDir + '/customer');
+var Instance = require(globla.modelDir + '/instance');
 
 
 router.get('/', function(req,res,next){
@@ -8,7 +9,20 @@ router.get('/', function(req,res,next){
 
 router.get('/:id', function(req,res,next){
   Customer.get(req.params.id, function(customer){
-    res.send(customer);
+    Instance.get_by_customer(customer.id, function(instances){
+      data = {
+        'customer' : customer,
+        'instances' : instances
+      };
+      res.send(data);
+    });
+  });
+});
+
+router.post('/:instance_id/edit', function(req,res,next){
+  edits = req['body']['edits'];
+  edits.foreach(function(val){
+    
   });
 });
 
