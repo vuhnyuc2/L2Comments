@@ -5,7 +5,7 @@ app.filter('searchFor', function(){
 	return function(arr, searchString){
 
 		if(!searchString){
-			return arr;
+			return [];
 		}
 
 		var result = [];
