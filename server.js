@@ -8,12 +8,15 @@ global.dbDir = path.resolve(__dirname + '/db');
 global.modelDir = path.resolve(__dirname + "/app/models");
 global.viewDir = path.resolve(__dirname + "/app/views");
 
+var customer = require(global.modelDir + '/customer');
+
 app.use('/assets', require("./assets"));
 
 app.use('/customer', require('./app/customer_controller'));
 
 app.get('/get_customers', function(req,res,next){
-  customer.get_all(function(customers){
+  customer.get_all(function(err, customers){
+    console.log(customers);
     res.send(customers);
   });
 });
