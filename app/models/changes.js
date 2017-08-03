@@ -1,4 +1,4 @@
-var db = require('./db')
+var db = require(global.dbDir);
 
 exports.create = function(instance_id, field, old_info, new_info, done){
   var values = [instance_id, field, old_info, new_info];
@@ -16,7 +16,7 @@ exports.get = function(id, done){
 }
 
 exports.get_by_instance = function(instance_id, done){
-  db.get().query("SELECT * FROM changes WHERE instance_id", instance_id function(err, result){
+  db.get().query("SELECT * FROM changes WHERE instance_id", instance_id, function(err, result){
     if (err) return done(err);
     done(null, result);
   });

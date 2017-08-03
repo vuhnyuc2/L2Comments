@@ -1,4 +1,4 @@
-var db = require('./db')
+var db = require(global.dbDir);
 
 exports.create = function(customer, field, new_info, date, done){
   var values = [customer, field, new_info, date];
@@ -16,7 +16,7 @@ exports.get = function(id, done){
 }
 
 exports.get_by_customer = function(company, done){
-  db.get().query("SELECT * FROM customers WHERE name", company function(err, result){
+  db.get().query("SELECT * FROM customers WHERE name", company, function(err, result){
     if (err) return done(err);
     done(null, result);
   });

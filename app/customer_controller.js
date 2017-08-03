@@ -1,8 +1,8 @@
 var router = require('express').Router();
 var Customer = require(global.modelDir + '/customer');
 var Instance = require(global.modelDir + '/instance');
-var Comment = require(glboal.modelDir + '/comment');
-var Changes = require(global.modelDir + )
+var Comment = require(global.modelDir + '/comment');
+var Changes = require(global.modelDir + '/changes')
 
 
 router.get('/', function(req,res,next){
@@ -22,7 +22,10 @@ router.get('/:id', function(req,res,next){
 });
 
 router.get('/:instance_id/changes', function(req,res,next){
-
+  instance_id = req.params.instance_id;
+  Changes.get_by_instance(instance_id, function(err, suc){
+    res.send(suc);
+  });
 });
 
 router.post('/:instance_id/edit', function(req,res,next){
