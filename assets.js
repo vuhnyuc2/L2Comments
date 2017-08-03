@@ -17,7 +17,7 @@ router.get("/customerCtlr.js", function(req,res,next){
 });
 
 router.get("/custom.css", function(req,res,next){
-  res.sendFile(global.viewDir + "/app/views/custom.css");
+  res.sendFile(global.viewDir + "/custom.css");
 });
 
 module.exports = router;
