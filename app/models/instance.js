@@ -24,7 +24,10 @@ exports.edit_field = function(id, field, value, done){
   values = [value,id];
   db.get().query("UPDATE instances SET "+field+"= ? WHERE id = ?", values, function(err, result){
     if (err) return done(err);
-    done(null, result);
+    changes.create(id, field, value, function(err, suc){
+      if (err) return done(err);
+      done(null, suc);
+    });
   });
 }
 
