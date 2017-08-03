@@ -2,12 +2,23 @@
 <head>
   <script src="/assets/angular.js"></script>
   <script src="/assets/homeCtlr.js"></script>
+  <link rel="stylesheet" href="/assets/custom.css">
   <link rel="stylesheet" href="/assets/bootstrap.min.css">
+
 </head>
 
   <body ng-controller="homeCtlr">
     {{customers}}
+    <div id="search-area">
+      <h1>L2 Comments</h1>
+      <input type="text" ng-model="searchString" placeholder="Enter company name" />
+
+      <ul>
+        <li ng-repeat="i in companies | searchFor:searchString">
+          <p>{{i.name}}</p>
+        </li>
+      </ul>
+    </div>
+
   </body>
-  <br>
-  Hello World!
 </html>
