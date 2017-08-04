@@ -4,7 +4,7 @@ app.controller("customerCtlr",function($scope, $http, $routeParams){
   $scope.init = function(){
     $scope.customer = [];
     $http({
-      url: "/get_customer/" + $routeParams.id;,
+      url: "/get_customer/" + $routeParams.id,
       method: "GET",
     }).then(function(resp){
       $scope.customer = resp['data'];
