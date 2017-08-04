@@ -20,6 +20,9 @@ app.filter('searchFor', function(){
 
 		});
 
+    if(result.length > 10)
+      result = result.slice(0,10);
+
 		return result;
 	};
 

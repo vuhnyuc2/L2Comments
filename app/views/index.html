@@ -16,7 +16,7 @@
       <div id="search-area">
         <input type="text" ng-model="searchString" placeholder="Enter company name" />
       </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block" ng-repeat="i in companies | searchFor:searchString">{{i.name}}</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" ng-repeat="i in customers | searchFor:searchString">{{i.name}}</button>
     </div>
     </div>
   </body>
