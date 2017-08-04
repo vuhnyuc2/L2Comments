@@ -2,14 +2,14 @@ var db = require(global.dbDir);
 
 exports.create = function(name, done){
   var values = [name];
-  db.get().query("INSERT INTO customers (id, name) VALUES (?, ?)", values, function(err, result){
+  db.get().query("INSERT INTO customers (name) VALUES (?)", values, function(err, result){
     if (err) return done(err);
     done(null, result.insertId);
   });
 }
 
 exports.get_all = function(done){
-  db.get().query("SELECT * FROM customers", function(err, result){
+  db.get().query("SELECT name FROM customers", function(err, result){
     if (err) return done(err);
     done(null, result);
   });
