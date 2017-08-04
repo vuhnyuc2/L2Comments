@@ -3,7 +3,7 @@
   <script src="/assets/angular.js"></script>
   <script src="/assets/homeCtlr.js"></script>
   <link rel="stylesheet" href="/assets/custom.css">
-  <link rel="stylesheet" href="/assets/bootstrap.min.css">
+  <link data-require="bootstrap-css@3.3.7" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
 
 </head>
 
@@ -15,6 +15,12 @@
       <div class="panel-body">
       <div id="search-area">
         <input type="text" ng-model="searchString" placeholder="Enter company name" />
+      </div>
+      <div ng-show="(customers | searchFor:searchString).length == 0 && searchString.length > 1">
+        <a ng-click="create_customer(searchString)" id="add-button" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Company
+        </a>
+        <p> No search results found for "{{searchString}}". Press Enter to add this company </p>
       </div>
             <button type="button" class="btn btn-primary btn-lg btn-block" ng-repeat="i in customers | searchFor:searchString" ng-click="get_instances(i.id)">{{i.name}}</button>
     </div>

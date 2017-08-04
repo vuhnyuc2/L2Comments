@@ -1,5 +1,6 @@
 var app = angular.module("home", []);
 
+
 app.filter('searchFor', function(){
 
 	return function(arr, searchString){
@@ -30,6 +31,18 @@ app.filter('searchFor', function(){
 
 app.controller("homeCtlr",function($scope, $http){
 
+	$scope.create_customer = function(name){
+    $http({
+      url: "/create_customer",
+      method: "POST",
+      params: {name : name}
+    }).then(function(resp){
+      console.log(resp['data']);
+    }, function(err){
+        console.log("failure");
+    });
+  }
+
   $scope.get_instances = function(id){
     $http({
       url: "/get_instances",
@@ -56,4 +69,12 @@ app.controller("homeCtlr",function($scope, $http){
   }
 
   $scope.init();
+
+	$scope.noEntry = function(){
+		if(!$scope.customers || !$scope.searchString)
+			return false;
+		if($scope.customers.length == 0 && $scope.searchString.length > 1)
+			return true;
+		return false;
+	}
 });

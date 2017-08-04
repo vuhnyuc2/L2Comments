@@ -7,9 +7,10 @@ body{
   background-size: cover;
 }
 
-a, a:visited {
-	outline:none;
-	color:#389dc1;
+a:visited
+{
+    text-decoration: none;
+    decoration: none;
 }
 
 a:hover{
@@ -18,6 +19,14 @@ a:hover{
 
 section, footer, header, aside, nav{
 	display: block;
+}
+
+#add-button{
+	background-color: #337ab7;
+	position: absolute;
+	margin-bottom: 100px;
+	top: 230px;
+	margin-left: 215px;
 }
 
 #show-area{
