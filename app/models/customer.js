@@ -9,7 +9,7 @@ exports.create = function(name, done){
 }
 
 exports.get_all = function(done){
-  db.get().query("SELECT name FROM customers", function(err, result){
+  db.get().query("SELECT * FROM customers", function(err, result){
     if (err) return done(err);
     done(null, result);
   });

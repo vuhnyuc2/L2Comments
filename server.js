@@ -9,6 +9,7 @@ global.modelDir = path.resolve(__dirname + "/app/models");
 global.viewDir = path.resolve(__dirname + "/app/views");
 
 var customer = require(global.modelDir + '/customer');
+var instance = require(global.modelDir + '/instance');
 
 app.use('/assets', require("./assets"));
 
@@ -18,6 +19,13 @@ app.get('/get_customers', function(req,res,next){
   customer.get_all(function(err, customers){
     console.log(customers);
     res.send(customers);
+  });
+});
+
+app.get('/get_instances', function(req,res,next){
+  instance.get_by_customer(req.query.id, function(err, instances){
+    console.log(instances[0].customer_id);
+    res.send(instances);
   });
 });
 

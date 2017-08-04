@@ -29,8 +29,22 @@ app.filter('searchFor', function(){
 });
 
 app.controller("homeCtlr",function($scope, $http){
+
+  $scope.get_instances = function(id){
+    $http({
+      url: "/get_instances",
+      method: "GET",
+      params: {id : id}
+    }).then(function(resp){
+      $scope.instances = resp['data'];
+    }, function(err){
+        console.log("failure");
+    });
+  }
+
   $scope.init = function(){
     $scope.customers = [];
+    $scope.instances = [];
     $http({
       url: "/get_customers",
       method: "GET",
@@ -42,23 +56,4 @@ app.controller("homeCtlr",function($scope, $http){
   }
 
   $scope.init();
-  //PlaceHolder for test search
-  $scope.companies = [
-    {
-      name : 'Walmart',
-      otherInfo : 'none'
-    },
-    {
-      name : 'IBM',
-      otherInfo : 'none'
-    },
-    {
-      name : 'Citibank',
-      otherInfo : 'none'
-    },
-    {
-      name : 'BestBuy',
-      otherInfo : 'none'
-    }
-  ]
 });

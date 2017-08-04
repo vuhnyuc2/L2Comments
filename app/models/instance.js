@@ -32,7 +32,7 @@ exports.edit_field = function(id, field, value, done){
 }
 
 exports.get_by_customer = function(customer_id, done){
-  db.get().query("SELECT * FROM instances WHERE customer_id", customer_id, function(err, result){
+  db.get().query("SELECT * FROM instances WHERE customer_id = ?", customer_id, function(err, result){
     if (err) return done(err);
     done(null, result);
   });
