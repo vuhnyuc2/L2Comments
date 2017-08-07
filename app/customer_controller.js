@@ -11,7 +11,7 @@ router.get('/', function(req,res,next){
 
 router.get('/:id', function(req,res,next){
   Customer.get(req.params.id, function(err, customer){
-    Instance.get_by_customer(customer.id, function(err, instances){
+    Instance.get_by_customer(customer[0].id, function(err, instances){
       data = {
         'customer' : customer,
         'instances' : instances
