@@ -5,11 +5,11 @@ var Comment = require(global.modelDir + '/comment');
 var Changes = require(global.modelDir + '/changes')
 
 
-router.get('/', function(req,res,next){
+router.get('/:id', function(req,res,next){
   res.sendFile(global.viewDir + '/customer.html');
 });
 
-router.get('/:id', function(req,res,next){
+router.get('/get/:id', function(req,res,next){
   Customer.get(req.params.id, function(err, customer){
     Instance.get_by_customer(customer[0].id, function(err, instances){
       data = {

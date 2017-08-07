@@ -50,6 +50,7 @@ app.controller("homeCtlr",function($scope, $http){
       params: {id : id}
     }).then(function(resp){
       $scope.instances = resp['data'];
+			console.log(id);
     }, function(err){
         console.log("failure");
     });
