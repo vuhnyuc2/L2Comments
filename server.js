@@ -23,7 +23,6 @@ app.post('/create_customer', function(req,res,next){
 
 app.get('/get_customers', function(req,res,next){
   customer.get_all(function(err, customers){
-    console.log(customers);
     res.send(customers);
   });
 });
