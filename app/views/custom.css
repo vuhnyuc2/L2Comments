@@ -22,6 +22,14 @@ a:visited
 	border-color: #565353 !important;
 }
 
+.theme-color:hover {
+	opacity: 1 !important;
+}
+
+.theme-color:focus {
+	border-color: #565353 !important;
+}
+
 a:hover{
 	text-decoration:none;
 }
