@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var Customer = require(global.modelDir + '/customer');
 var Instance = require(global.modelDir + '/instance');
-var Comment = require(global.modelDir + '/comment');
+var Comments = require(global.modelDir + '/comment');
 var Changes = require(global.modelDir + '/changes')
 
 
@@ -29,6 +29,26 @@ router.get('/:instance_id/changes', function(req,res,next){
   });
 });
 
+router.get('/:instance_id/comments', function(req,res,next){
+  instance_id = req.params.instance_id;
+  Comments.get_by_instance(instance_id, function(err, suc){
+    res.send(suc);
+  });
+});
+
+router.get('/:instance_id/info', function(req,res,next){
+  instance_id = req.params.instance_id;
+  Changes.get_by_instance(instance_id, function(err, changes){
+    Comments.get_by_instance(instance_id, function(err, comments){
+      data = {
+        'changes' : changes,
+        'comments' : comments
+      };
+      res.send(data);
+    });
+  });
+});
+
 router.post('/:instance_id/edit', function(req,res,next){
   edits = req['body']['edits'];
   id = req.params.instance_id;
@@ -51,7 +71,7 @@ router.post('/:instance_id/edit', function(req,res,next){
 router.post('/:instance_id/comment', function(req,res,next){
   instance_id = req.params.instance_id;
   comment = req['body']['comment'];
-  Comment.create(id,comment,function(err,suc){
+  Comment.create(instance_id,comment,name,pmr,function(err,suc){
     if(suc){
       res.status(200).send('success');
     }
