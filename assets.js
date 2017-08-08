@@ -25,7 +25,11 @@ router.get("/custom.css", function(req,res,next){
 });
 
 router.get("/neat.svg", function(req,res,next){
-  res.sendFile(global.viewDir + "/neat.svg");
+  res.sendFile(global.viewDir + "/diamond.svg");
+});
+
+router.get("/video.mp4", function(req,res,next){
+  res.sendFile(global.viewDir + "/video.mp4");
 });
 
 module.exports = router;

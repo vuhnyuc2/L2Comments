@@ -8,8 +8,13 @@
 </head>
 
   <body ng-controller="homeCtlr">
-    <div id="show-area" class="panel panel-primary">
-      <div class="panel-heading">
+    <video autoplay="" loop="" muted="" style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible; opacity: 1; width: 1903px; height: auto;">
+      <source src="/assets/video.mp4" type="video/mp4">
+    </video>
+
+
+    <div id="show-area">
+      <div >
         <h1 class="display-1">L2 Comments</h1>
       </div>
       <div class="panel-body">
@@ -17,12 +22,12 @@
         <input type="text" ng-model="searchString" placeholder="Enter company name" />
       </div>
       <div ng-show="(customers | searchFor:searchString).length == 0 && searchString.length > 1">
-        <a ng-click="create_customer(searchString)" id="add-button" class="btn btn-info btn-lg">
+        <a ng-click="create_customer(searchString)" id="add-button" class="btn btn-info btn-lg" style="border-color: #565353;">
           <span class="glyphicon glyphicon-plus-sign"></span> Add Company
         </a>
-        <p> No search results found for "{{searchString}}". Press Enter to add this company </p>
+        <p style="color:white"> No search results found for "{{searchString}}". Press Enter to add this company </p>
       </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block" ng-repeat="i in customers | searchFor:searchString" ng-click="get_instances(i.id)">{{i.name}}</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block theme-color" ng-repeat="i in customers | searchFor:searchString" ng-click="redirect(i.id)">{{i.name}}</button>
     </div>
     </div>
   </body>
