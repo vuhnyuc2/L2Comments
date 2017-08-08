@@ -29,7 +29,7 @@ app.filter('searchFor', function(){
 
 });
 
-app.controller("homeCtlr",function($scope, $http){
+app.controller("homeCtlr",function($scope, $http, $window){
 
 	$scope.create_customer = function(name){
     $http({
@@ -55,6 +55,10 @@ app.controller("homeCtlr",function($scope, $http){
         console.log("failure");
     });
   }
+
+	$scope.redirect = function(id){
+		$window.location.href = '/customer/'+id;
+	}
 
   $scope.init = function(){
     $scope.customers = [];

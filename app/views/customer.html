@@ -4,10 +4,71 @@
   <script src="/assets/angular-route.js"></script>
   <script src="/assets/customerCtlr.js"></script>
   <link rel="stylesheet" href="/assets/custom.css">
-  <link rel="stylesheet" href="/assets/bootstrap.min.css">
+  <link data-require="bootstrap-css@3.3.7" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
 </head>
 
   <body ng-controller="customerCtlr">
-    Somehting Here
+    <div id="show-area2">
+        <div class="panel with-nav-tabs panel-primary">
+            <div class="panel-heading">
+                    <ul ng-init="tabSelected = 0;" class="nav nav-tabs">
+
+                        <li ng-repeat="i in instances" ng-class="isSelectedTab($index,0)" ng-click="setTab($index)"><a href="#" data-toggle="tab">{{i.name}}</a></li>
+
+                        <li id="add-instance"><a href="#tab1primary" data-toggle="tab">&nbsp<span class="glyphicon glyphicon-plus"></span></a></li>
+
+                    </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
+
+                    <div ng-repeat="i in instances" ng-class="isSelectedTab($index,1)" id="tab$indexprimary">
+                      <table id="lefter" class="table table-hover">
+                        <tr>
+                          <td>BPM Application</td>
+                          <td>{{i.bpm_application}}</td>
+                        </tr>
+                        <tr>
+                          <td>Database Type</td>
+                          <td>{{i.db_type}}</td>
+                        </tr>
+                        <tr>
+                          <td>JDK Version</td>
+                          <td>{{i.jdk_version}}</td>
+                        </tr>
+                        <tr>
+                          <td>Process Center</td>
+                          <td>{{i.process_center}}</td>
+                        </tr>
+                        <tr>
+                          <td>WAS Version</td>
+                          <td>{{i.was_version}}</td>
+                        </tr>
+                      </table>
+
+                      <table id="lefter" class="table table-hover">
+                        <tr>
+                          <td>BPM Version</td>
+                          <td>{{i.bpm_version}}</td>
+                        </tr>
+                        <tr>
+                          <td>Database Version</td>
+                          <td>{{i.db_version}}</td>
+                        </tr>
+                        <tr>
+                          <td>OS</td>
+                          <td>{{i.os}}</td>
+                        </tr>
+                        <tr>
+                          <td>Process Server</td>
+                          <td>{{i.process_server}}</td>
+                        </tr>
+                      </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
   </body>
 </html>

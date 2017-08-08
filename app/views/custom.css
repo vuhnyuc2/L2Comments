@@ -1,10 +1,8 @@
 body{
 	color: #5e5b64;
 	text-align:center;
-  background-image: url(/assets/neat.svg);
-  background-position-x: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+	background-color: #b3b2b2 !important;
+	background-image: url("data:image/svg+xml,%3Csvg width='24' height='40' viewBox='0 0 24 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40c5.523 0 10-4.477 10-10V0C4.477 0 0 4.477 0 10v30zm22 0c-5.523 0-10-4.477-10-10V0c5.523 0 10 4.477 10 10v30z' fill='%230c0c0c' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 a:visited
@@ -13,25 +11,63 @@ a:visited
     decoration: none;
 }
 
+.display-1 {
+	color: white;
+	font-size: 55px;
+	text-shadow: 3px 3px black;
+}
+
+.theme-color {
+	background-color: #565353 !important;
+	border-color: #565353 !important;
+}
+
 a:hover{
 	text-decoration:none;
 }
+
+.panel-primary{
+	border-color: #565353 !important;
+
+}
+
+.gi-2x{font-size: 1.4em;}
+.gi-3x{font-size: 3em;}
+.gi-4x{font-size: 4em;}
+.gi-5x{font-size: 5em;}
 
 section, footer, header, aside, nav{
 	display: block;
 }
 
+#lefter {
+	float:left;
+	width: 43%;
+	margin: 30px;
+}
+
 #add-button{
-	background-color: #337ab7;
+	background-color: #565353;
 	position: absolute;
 	margin-bottom: 100px;
-	top: 230px;
+	top: 325px;
 	margin-left: 215px;
 }
 
 #show-area{
-  background-color: white;
+  /*background-color: rbga(0,0,0,0.5);*/
   width: 800px;
+  margin: auto;
+  margin-top: 200px;
+	border-color: #565353;
+	/*opacity: 0.5;*/
+  /*border-radius: 20px;
+  box-shadow: 0px 0px 20px #000000;*/
+}
+
+#show-area2{
+  background-color: white;
+  width: 1000px;
   margin: auto;
   margin-top: 100px;
   /*border-radius: 20px;
@@ -39,15 +75,12 @@ section, footer, header, aside, nav{
 }
 
 #search-area{
-	background-color:#337ab7;
-
-
-
+	background-color:#565353;
 	box-shadow: 0 1px 1px #ccc;
 	border-radius: 2px;
 	width: 400px;
 	padding: 14px;
-	margin: 15px auto 25px;
+	margin: 30px auto 25px;
 	position:relative;
 }
 
@@ -68,4 +101,113 @@ section, footer, header, aside, nav{
 	font-weight: bold;
 	outline: none;
 	text-indent: 40px;
+}
+
+.panel.with-nav-tabs .panel-heading{
+    padding: 5px 5px 0 5px;
+		background-color: #565353;
+}
+.panel.with-nav-tabs .nav-tabs{
+	border-bottom: none;
+}
+.panel.with-nav-tabs .nav-justified{
+	margin-bottom: -1px;
+}
+
+#add-instance {
+	margin-bottom: -3px;
+}
+
+/********************************************************************/
+/*** PANEL PRIMARY ***/
+.with-nav-tabs.panel-primary .nav-tabs > li > a,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+    color: #fff;
+
+		border-radius: 20px 10px 0px 0px;
+		background-color: #565353;
+		margin-right: 0px;
+		border: solid 1px darkgray;
+		border-bottom: none;
+}
+.with-nav-tabs.panel-primary .nav-tabs > .open > a,
+.with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+	color: #fff;
+	background-color: #6b6967;
+	border-color: transparent;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+	color: #565353;
+	background-color: #fff;
+	border-color: #565353;
+	border-bottom-color: transparent;
+	font-weight: bold;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
+    background-color: #428bca;
+    border-color: #3071a9;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
+    color: #fff;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+    background-color: #3071a9;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+    background-color: #4a9fe9;
+}
+
+/* ==========================================================================
+   Video Background
+   ========================================================================== */
+#video-area {
+  overflow: hidden;
+  position: relative;
+}
+#video-area .contents {
+  padding: 160px 0 80px;
+}
+#video-area .contents h1 {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  line-height: 70px;
+}
+#video-area .contents p {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.5px;
+}
+#video-area .contents .btn {
+  margin: 20px 10px;
+  text-transform: uppercase;
+}
+#video-area .banner_bottom_btn {
+  margin-top: 40px;
+}
+#video-area .banner_bottom_btn i {
+  color: #fff;
+  font-size: 48px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#video-area .banner_bottom_btn i:hover {
+  color: #4676fa;
+}
+.overlay-2 {
+  background: rgba(0, 0, 0, 0.7) !important;
 }
