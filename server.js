@@ -17,7 +17,9 @@ app.use('/customer', require('./app/customer_controller'));
 
 app.post('/create_customer', function(req,res,next){
   customer.create(req.query.name, function(err, customers){
-    res.send(customers);
+    if(!err){
+        res.sendStatus(200);
+    }
   });
 });
 
