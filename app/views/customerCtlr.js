@@ -1,29 +1,17 @@
 var app = angular.module("customerView", ['ngRoute']);
-app.config(['$routeProvider', function ($routeProvider)
-    {
-        $routeProvider
-        .when ('/customer/:customer_id',
-                {
-                    templateUrl : 'customer.html',
-                    controller  : 'customerCtlr'
-                }
-              )
-        .otherwise({
-          redirectTo: '/customerFALSE'
-        });
-    }]);
-app.controller("customerCtlr",function($scope, $http, $location, $routeParams){
+
+app.controller("customerCtlr",function($scope, $http, $location){
   $scope.init = function(){
-    console.log($location.path);
-    console.log($routeParams);
+    url = $location.absUrl().split('/').pop();
     $scope.customer = [];
     $http({
-      url: "/customer/get/" + $routeParams.customer_id,
+      url: "/customer/get/" + url,
       method: "GET",
     }).then(function(resp){
       $scope.customer = resp['data'];
+      console.log($scope.customer);
     }, function(err){
-        console.log("failure");
+        console.log(err);
     });
   }
 
