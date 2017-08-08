@@ -1,7 +1,9 @@
 CREATE TABLE comments (
 		id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 		instance_id INT NOT NULL,
-        comment TEXT NOT NULL
+		name TEXT NOT NULL,
+    comment TEXT NOT NULL,
+		pmr VARCHAR(13)
 	);
 
 CREATE TABLE changes(
