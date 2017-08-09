@@ -3,7 +3,8 @@ CREATE TABLE comments (
 		instance_id INT NOT NULL,
 		name TEXT NOT NULL,
     comment TEXT NOT NULL,
-		pmr_id INT
+		pmr_id INT,
+		date TIMESTAMP NOT NULL
 	);
 
 CREATE TABLE pmrs(

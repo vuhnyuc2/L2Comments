@@ -1,6 +1,8 @@
 INSERT INTO customers (name) VALUES ('Abbott Laboratories');
 INSERT INTO instances (customer_id, name) VALUES (1,'Production');
 INSERT INTO instances (customer_id, name) VALUES (1,'Development');
+INSERT INTO comments (instance_id, name, comment) VALUES (1,'Shoaib Akbar','Was a hard pmr');
+INSERT INTO comments (instance_id, name, comment) VALUES (1,'Vasil Uhnyuck','Omg I did TWELVE WHOLE PMRS!!!');
 
 INSERT INTO customers (name) VALUES ('Abercrombie & Fitch Co.');
 INSERT INTO instances (customer_id, name) VALUES (2,'Production');

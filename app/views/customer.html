@@ -71,5 +71,18 @@
             </div>
         </div>
     </div>
+    <br/>
+    <div class="bottom-panel">
+      <div class="comment" ng-repeat="comment in instanceData.comments">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong>{{comment.name}}</strong> <span class="text-muted">{{comment.date}}</span>
+          </div>
+          <div class="panel-body">
+            {{comment.comment}}
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
