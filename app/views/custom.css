@@ -127,6 +127,49 @@ section, footer, header, aside, nav{
 }
 
 /********************************************************************/
+/*** EDIT VARS ***/
+.templateRoot{
+    display: inline-block;
+		width: 100%;
+}
+.hover-edit-trigger {
+    padding: 3px;
+}
+.hover-edit-trigger:hover{
+    /*border: 1px solid #dcdcdc;*/
+    border-radius: 4px;
+}
+.edit-pencil{
+    /*display: none;*/
+		float:right;
+		visibility: hidden;
+    margin-left: 3px;
+    padding: 3px;
+    border-left: 1px solid #dcdcdc;
+}
+.edit-row:hover .edit-pencil{
+		visibility: visible;
+    display: inline-block;
+}
+.edit-button-group{
+    border: 1px solid #dcdcdc;
+    border-top: none;
+    border-radius: 4px;
+    padding: 0px 3px 0px 3px;
+		margin-top: -28px;
+		margin-right: 3px;
+}
+.edit-button-group .glyphicon{
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    margin: 1px;
+    cursor: pointer;
+		color: #565353;
+}
+.inputText {
+	width: 100% !important;
+}
+/********************************************************************/
 /*** PANEL PRIMARY ***/
 .with-nav-tabs.panel-primary .nav-tabs > li > a,
 .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,

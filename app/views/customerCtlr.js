@@ -64,3 +64,69 @@ app.controller("customerCtlr",function($scope, $http, $location){
 
   $scope.init();
 });
+
+app.directive('clickToEdit', function($timeout) {
+    return {
+        require: 'ngModel',
+        scope: {
+            model: '=ngModel',
+            type: '@type'
+        },
+        replace: true,
+        transclude: false,
+        template:
+            '<div class="templateRoot">'+
+                '<div class="hover-edit-trigger" title="click to edit">'+
+                    '<div class="hover-text-field" ng-show="!editState" ng-click="toggle()">{{model}}<div class="edit-pencil glyphicon glyphicon-pencil"></div></div>'+
+                    '<input class="inputText" type="text" ng-model="localModel" ng-enter="save()" ng-show="editState && type == \'inputText\'" />' +
+                '</div>'+
+                '<div class="edit-button-group pull-right" ng-show="editState">'+
+                    '<div class="glyphicon glyphicon-ok"  ng-click="save()"></div>'+
+                    '<div class="glyphicon glyphicon-remove" ng-click="cancel()"></div>'+
+                '</div>'+
+            '</div>',
+        link: function (scope, element, attrs) {
+            scope.editState = false;
+
+            // make a local ref so we can back out changes, this only happens once and persists
+            scope.localModel = scope.model;
+
+            // apply the changes to the real model
+            scope.save = function(){
+                scope.model = scope.localModel;
+                scope.toggle();
+            };
+
+            // don't apply changes
+            scope.cancel = function(){
+                scope.localModel = scope.model;
+                scope.toggle();
+            }
+
+            scope.toggle = function () {
+
+                scope.editState = !scope.editState;
+
+                var x1 = element[0].querySelector("."+scope.type);
+
+                $timeout(function(){
+                    // focus if in edit, blur if not. some IE will leave cursor without the blur
+                    scope.editState ? x1.focus() : x1.blur();
+                }, 0);
+            }
+        }
+    }
+});
+
+app.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+                event.preventDefault();
+            }
+        });
+    };
+});
