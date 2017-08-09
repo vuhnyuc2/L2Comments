@@ -3,6 +3,8 @@ var path = require('path');
 var app = express();
 var db = require('./db');
 
+app.use(require('body-parser').json());
+
 global.rootDir = path.resolve(__dirname);
 global.dbDir = path.resolve(__dirname + '/db');
 global.modelDir = path.resolve(__dirname + "/app/models");

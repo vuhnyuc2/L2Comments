@@ -1,11 +1,33 @@
 var app = angular.module("customerView", ['ngRoute']);
 
-app.controller("customerCtlr",function($scope, $http, $location){
+app.controller("customerCtlr",function($rootScope, $scope, $http, $location){
   $scope.getInstanceInfo = function(id){
     $scope.instanceData = {};
     $http({
       url: "/customer/" + id.toString() + "/info/",
-      method: "GET",
+      method: "GET"
+    }).then(function(resp){
+      console.log(resp['data']);
+      return resp['data'];
+    }, function(err){
+      console.log(err);
+    });
+  }
+
+  $rootScope.save_info = function(id, info_field, info_value){
+    var params = {
+      field: info_field,
+      value: info_value
+    };
+    params = JSON.stringify(params);
+
+    $http({
+      url: "/customer/" + id.toString() + "/edit/",
+      method: "POST",
+      headers: {
+         'Content-Type': "application/json"
+       },
+      data: params
     }).then(function(resp){
       console.log(resp['data']);
       $scope.instanceData = resp['data'];
@@ -27,12 +49,15 @@ app.controller("customerCtlr",function($scope, $http, $location){
     $scope.instances = [];
     $scope.tabSelected = 0;
     $scope.instance_info = [];
+    $scope.field_names = ["bpm_application", "db_type", "jdk_version", "process_center", "was_version", "bpm_version", "db_version", "os", "process_server"];
+    $scope.field_text = ["BPM Application", "Database Type", "JDK Version", "Process Center", "WAS Version", "BPM Version", "Database Version", "OS", "Process Server"];
     $http({
       url: "/customer/get/" + url,
-      method: "GET",
+      method: "GET"
     }).then(function(resp){
       $scope.customer = resp['data'].customer;
       $scope.instances = resp['data'].instances;
+      $rootScope.tabSelected = $scope.instances[0].id;
       console.log($scope.instances);
     }, function(err){
         console.log(err);
@@ -41,14 +66,14 @@ app.controller("customerCtlr",function($scope, $http, $location){
   }
 
   $scope.setTab = function(tab) {
-    $scope.tabSelected = tab;
+    $rootScope.tabSelected = tab;
   }
 
   $scope.isSelectedTab = function(tab, type){
-    if(angular.isUndefined($scope.tabSelected))
+    if(angular.isUndefined($rootScope.tabSelected))
       return "";
 
-    if(tab == $scope.tabSelected) {
+    if(tab == $rootScope.tabSelected) {
       switch(type){
         case 0:
           return "active";
@@ -67,11 +92,12 @@ app.controller("customerCtlr",function($scope, $http, $location){
   $scope.init();
 });
 
-app.directive('clickToEdit', function($timeout) {
+app.directive('clickToEdit', function($timeout, $rootScope) {
     return {
         require: 'ngModel',
         scope: {
             model: '=ngModel',
+            fieldname: '=info',
             type: '@type'
         },
         replace: true,
@@ -96,6 +122,8 @@ app.directive('clickToEdit', function($timeout) {
             // apply the changes to the real model
             scope.save = function(){
                 scope.model = scope.localModel;
+                console.log(scope.fieldname);
+                $rootScope.save_info($rootScope.tabSelected, scope.fieldname, scope.model);
                 scope.toggle();
             };
 

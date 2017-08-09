@@ -1,4 +1,5 @@
 var db = require(global.dbDir);
+var Changes = require(global.modelDir + '/changes');
 
 exports.create = function(customer_id, name, bpm, was, jdk, process_center,
   process_server, os, bpm_application, db_type, db_version, done){
@@ -24,7 +25,7 @@ exports.edit_field = function(id, field, value, done){
   values = [value,id];
   db.get().query("UPDATE instances SET "+field+"= ? WHERE id = ?", values, function(err, result){
     if (err) return done(err);
-    changes.create(id, field, value, function(err, suc){
+    Changes.create(id, field, value, function(err, suc){
       if (err) return done(err);
       done(null, suc);
     });

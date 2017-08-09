@@ -65,7 +65,7 @@ router.get('/:instance_id/info', function(req,res,next){
 
 // --------------------- Post info --------------------------
 router.post('/:instance_id/edit', function(req,res,next){
-  edit = req['body'];
+  edit = req.body;
   instance_id = req.params.instance_id;
   Instance.edit_field(instance_id, edit['field'], edit['value'], function(err, suc){
     if(err){
