@@ -27,7 +27,7 @@
         </a>
         <p style="color:white"> No search results found for "{{searchString}}". Press Enter to add this company </p>
       </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block theme-color" style="opacity: 0.75" ng-repeat="i in customers | searchFor:searchString" ng-click="redirect(i.id)">{{i.name}}</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block theme-color home-list-buttons" ng-repeat="i in customers | searchFor:searchString" ng-click="redirect(i.id)">{{i.name}}</button>
     </div>
     </div>
   </body>

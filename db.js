@@ -12,7 +12,7 @@ exports.connect = function(done){
   state.pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'root',
     database: DEVELOPMENT_DB
   });
   state.mode = 'DEVELOPMENT';
