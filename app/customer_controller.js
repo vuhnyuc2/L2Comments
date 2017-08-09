@@ -94,6 +94,10 @@ router.post('/:instance_id/pmr', function(req,res,next){
   instance_id = req.params.instance_id;
   pmr_number = req['body']['pmr_number'];
   description = req['body']['description'];
+  var pmr_pat = new RegExp("^[0-9]{5},[0-9]{3},[0-9]{3}$");
+  if(!pmr_pat.test(pmr_number.toString()))){
+    res.sendStatus(400);
+  }
   Pmrs.get_by_instance(pmr_number, instance_id, description, function(err, suc){
     res.sendStatus(200);
   });
