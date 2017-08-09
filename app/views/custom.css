@@ -17,6 +17,12 @@ a:visited
 	text-shadow: 3px 3px black;
 }
 
+.home-list-buttons {
+	opacity: .75;
+	width: 400px !important;
+	margin: auto;
+}
+
 .theme-color {
 	background-color: #565353 !important;
 	border-color: #565353 !important;

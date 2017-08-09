@@ -11,6 +11,7 @@
     <div id="show-area2">
         <div class="panel with-nav-tabs panel-primary">
             <div class="panel-heading">
+                    <h1>{{customer[0].name}}</h1>
                     <ul ng-init="tabSelected = 0;" class="nav nav-tabs">
 
                         <li ng-repeat="i in instances" ng-class="isSelectedTab($index,0)" ng-click="setTab($index)"><a href="#" data-toggle="tab">{{i.name}}</a></li>
