@@ -11,6 +11,7 @@
     <div id="show-area2">
         <div class="panel with-nav-tabs panel-primary">
             <div class="panel-heading">
+                    <h1>{{customer[0].name}}</h1>
                     <ul ng-init="tabSelected = 0;" class="nav nav-tabs">
 
                         <li ng-repeat="i in instances" ng-class="isSelectedTab($index,0)" ng-click="setTab($index)"><a href="#" data-toggle="tab">{{i.name}}</a></li>
@@ -26,42 +27,42 @@
                       <table id="lefter" class="table table-hover">
                         <tr>
                           <td>BPM Application</td>
-                          <td>{{i.bpm_application}}</td>
+                          <td class="edit-row"><div click-to-edit type="inputText" ng-model="i.bpm_application"></div></td>
                         </tr>
                         <tr>
                           <td>Database Type</td>
-                          <td>{{i.db_type}}</td>
+                          <td class="edit-row"><div click-to-edit type="inputText" ng-model="i.db_type"></div></td>
                         </tr>
                         <tr>
                           <td>JDK Version</td>
-                          <td>{{i.jdk_version}}</td>
+                          <td class="edit-row"><div click-to-edit type="inputText" ng-model="i.jdk_version"></div></td>
                         </tr>
                         <tr>
                           <td>Process Center</td>
-                          <td>{{i.process_center}}</td>
+                          <td class="edit-row"><div click-to-edit type="inputText" ng-model="i.process_center"></div></td>
                         </tr>
                         <tr>
                           <td>WAS Version</td>
-                          <td>{{i.was_version}}</td>
+                          <td class="edit-row"><div click-to-edit type="inputText" ng-model="i.was_version"></div></td>
                         </tr>
                       </table>
 
                       <table id="lefter" class="table table-hover">
                         <tr>
                           <td>BPM Version</td>
-                          <td>{{i.bpm_version}}</td>
+                          <td class="edit-row"><div click-to-edit type="inputText" ng-model="i.bpm_version"></div></td>
                         </tr>
                         <tr>
                           <td>Database Version</td>
-                          <td>{{i.db_version}}</td>
+                          <td class="edit-row"><div click-to-edit type="inputText" ng-model="i.db_version"></div></td>
                         </tr>
                         <tr>
                           <td>OS</td>
-                          <td>{{i.os}}</td>
+                          <td class="edit-row"><div click-to-edit type="inputText" ng-model="i.os"></div></td>
                         </tr>
                         <tr>
                           <td>Process Server</td>
-                          <td>{{i.process_server}}</td>
+                          <td class="edit-row"><div click-to-edit type="inputText" ng-model="i.process_server"></div></td>
                         </tr>
                       </table>
                     </div>
