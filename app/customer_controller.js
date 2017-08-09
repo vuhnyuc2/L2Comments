@@ -47,7 +47,8 @@ router.get('/:instance_id/pmrs', function(req,res,next){
 
 // --------------------- batch info -------------------------
 router.get('/:instance_id/info', function(req,res,next){
-  instance_id = req.params.instance_id;
+  instance_id = req.params.instance_id+1;
+  console.log(instance_id);
   Changes.get_by_instance(instance_id, function(err, changes){
     Comments.get_by_instance(instance_id, function(err, comments){
       Pmrs.get_by_instance(instance_id, function(err, pmrs){
@@ -95,7 +96,7 @@ router.post('/:instance_id/pmr', function(req,res,next){
   pmr_number = req['body']['pmr_number'];
   description = req['body']['description'];
   var pmr_pat = new RegExp("^[0-9]{5},[0-9]{3},[0-9]{3}$");
-  if(!pmr_pat.test(pmr_number.toString()))){
+  if(!pmr_pat.test(pmr_number.toString())){
     res.sendStatus(400);
   }
   Pmrs.get_by_instance(pmr_number, instance_id, description, function(err, suc){

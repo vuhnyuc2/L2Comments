@@ -1,19 +1,20 @@
 var app = angular.module("customerView", ['ngRoute']);
 
 app.controller("customerCtlr",function($scope, $http, $location){
-  $scope.get_instance_info = function(id){
+  $scope.getInstanceInfo = function(id){
+    $scope.instanceData = {};
     $http({
       url: "/customer/" + id.toString() + "/info/",
       method: "GET",
     }).then(function(resp){
       console.log(resp['data']);
-      return resp['data'];
+      $scope.instanceData = resp['data'];
     }, function(err){
       console.log(err);
     });
   }
 
-  $scope.get_pmr_url = function(pmr){
+  $scope.getPmrUrl = function(pmr){
     values = pmr.split(',');
     url = "https://longspeakz.boulder.ibm.com/WebRetain/DispatcherServlet?oper=pmrDisplay&pmrnumber=" +
     values[0] + "&branch=" + values[1] + "&country=" + values[2] + "&library=current&type=Software";
@@ -36,6 +37,7 @@ app.controller("customerCtlr",function($scope, $http, $location){
     }, function(err){
         console.log(err);
     });
+    $scope.getInstanceInfo($scope.tabSelected);
   }
 
   $scope.setTab = function(tab) {
