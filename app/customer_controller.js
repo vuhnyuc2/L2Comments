@@ -47,7 +47,8 @@ router.get('/:instance_id/pmrs', function(req,res,next){
 
 // --------------------- batch info -------------------------
 router.get('/:instance_id/info', function(req,res,next){
-  instance_id = req.params.instance_id+1;
+  console.log(req.params.instance_id);
+  instance_id = req.params.instance_id;
   console.log(instance_id);
   Changes.get_by_instance(instance_id, function(err, changes){
     Comments.get_by_instance(instance_id, function(err, comments){

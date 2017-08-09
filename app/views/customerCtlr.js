@@ -8,7 +8,7 @@ app.controller("customerCtlr",function($rootScope, $scope, $http, $location){
       method: "GET"
     }).then(function(resp){
       console.log(resp['data']);
-      return resp['data'];
+      $scope.instanceData = resp['data'];
     }, function(err){
       console.log(err);
     });
@@ -30,7 +30,6 @@ app.controller("customerCtlr",function($rootScope, $scope, $http, $location){
       data: params
     }).then(function(resp){
       console.log(resp['data']);
-      $scope.instanceData = resp['data'];
     }, function(err){
       console.log(err);
     });
@@ -58,11 +57,11 @@ app.controller("customerCtlr",function($rootScope, $scope, $http, $location){
       $scope.customer = resp['data'].customer;
       $scope.instances = resp['data'].instances;
       $rootScope.tabSelected = $scope.instances[0].id;
+      $scope.getInstanceInfo($rootScope.tabSelected);
       console.log($scope.instances);
     }, function(err){
         console.log(err);
     });
-    $scope.getInstanceInfo($scope.tabSelected);
   }
 
   $scope.setTab = function(tab) {
