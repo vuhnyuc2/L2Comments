@@ -3,7 +3,14 @@ CREATE TABLE comments (
 		instance_id INT NOT NULL,
 		name TEXT NOT NULL,
     comment TEXT NOT NULL,
-		pmr VARCHAR(13)
+		pmr_id INT
+	);
+
+CREATE TABLE pmrs(
+		id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		pmr_number VARCHAR(13) NOT NULL,
+		instance_id INT NOT NULL,
+		description TEXT
 	);
 
 CREATE TABLE changes(
